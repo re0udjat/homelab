@@ -1,0 +1,44 @@
+# -- Override the name of the Chart
+nameOverride: ""
+
+# -- Override the full name of the Chart
+fullnameOverride: ""
+
+# -- Type of Cloudnative-pg database. There are available types:
+# * `postgresql`
+type: postgresql
+
+version:
+  # -- PostgreSQL major version
+  postgresql: "17"
+
+cluster:
+  # -- Number of database instances (Default 3).
+  # You should deploy 1 instance as primary database for read / write operators and 2 instances as standby for read-only.
+  # See: https://cloudnative-pg.io/documentation/1.24/architecture/
+  instances: 3
+
+  # -- Image pull policy. One of Always, Never, IfNotPresent.
+  # Defaults to IfNotPresent if not defined and can not be updated.
+  # Reference: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#pullpolicy-v1-core
+  imagePullPolicy: ""
+
+  # -- Defines the reference to a major version in an ImageCatalog
+  # Reference: https://cloudnative-pg.io/documentation/1.24/cloudnative-pg.v1/#postgresql-cnpg-io-v1-ImageCatalogRef
+  imageCatalogRef: {}
+
+  # -- Name of the container image with format <image>:<tag>@sha256:<digestValue>
+  # Default value depends on type (postgresql)
+  imageName: ""
+
+  additionalLabels: {}
+  annotations: {}
+
+imageCatalog:
+  # -- Whether to provision an image catalog. If imageCatalog.images is empty, this option will be ignored.
+  create: false
+  
+  # -- List of images to be provisioned in an image catalog
+  images:
+    - image: ghcr.io/cloudnative-pg/postgresql:17
+      major: 17
