@@ -6,5 +6,6 @@ metadata:
 spec:
   instances: {{ .Values.cluster.instances }}
   {{- include "cluster.image" . | indent 2 }}
+  imagePullPolicy: {{ default "IfNotPresent" .Values.cluster.imagePullPolicy }}
   storage:
     size: 2Gi

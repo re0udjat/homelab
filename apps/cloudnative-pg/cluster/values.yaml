@@ -25,6 +25,10 @@ cluster:
     # kind: ImageCatalog
     # name: postgresql
 
+  # -- Image pull policy (Always, Never or IfNotPresent).
+  # If it's not defined, it defaults to IfNotPresent and cannot be updated.
+  imagePullPolicy: ""
+
 imageCatalog:
   # -- Determine whether to provide an image catalog or not.
   # If imageCatalog.images is empty, this option will be ignored.
