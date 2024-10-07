@@ -1,20 +1,10 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: {{  include "cluster.fullname" . }}
+  name: {{ include "cluster.fullname" . }}
   namespace: {{ .Release.Namespace }}
-  {{- with .Values.cluster.annotations }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
-  labels:
-  {{- include "cluster.labels" . | nindent 4 }}
-  {{- with .Values.cluster.additionalLabels }}
-    {{ toYaml . | nindent 4 }}
-  {{- end }}
 spec:
   instances: {{ .Values.cluster.instances }}
-  {{- include "cluster.image" . | nindent 2 }}
-  imagePullPolicy: {{ default "IfNotPresent" .Values.cluster.imagePullPolicy }}
+  {{- include "cluster.image" . | indent 2 }}
   storage:
-    size: 1Gi
+    size: 2Gi

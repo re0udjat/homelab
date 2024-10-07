@@ -6,8 +6,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   images:
-  {{- range $image :=  .Values.imageCatalog.images }}
-  - image: {{ $image.image }}
-    major: {{ $image.major }}
+  {{- range $image := .Values.imageCatalog.images }}
+    - image: {{ $image.image }}
+      major: {{ $image.major }}
   {{- end }}
 {{- end }}
