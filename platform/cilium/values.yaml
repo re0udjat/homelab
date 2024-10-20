@@ -745,7 +745,7 @@ envoyConfig:
 ingressController:
   # -- Enable cilium ingress controller
   # This will automatically set enable-envoy-config as well.
-  enabled: false
+  enabled: true
   # -- Set cilium ingress controller to be the default ingress controller
   # This will let cilium ingress controller route entries without ingress class set
   default: false
@@ -753,7 +753,7 @@ ingressController:
   # Supported values: shared, dedicated
   # For granular control, use the following annotations on the ingress resource:
   # "ingress.cilium.io/loadbalancer-mode: dedicated" (or "shared").
-  loadbalancerMode: dedicated
+  loadbalancerMode: shared
   # -- Enforce https for host having matching TLS host in Ingress.
   # Incoming traffic to http listener will return 308 http error code with respective location in header.
   enforceHttps: true
@@ -1309,7 +1309,7 @@ hubble:
       extraIpAddresses: []
   relay:
     # -- Enable Hubble Relay (requires hubble.enabled=true)
-    enabled: false
+    enabled: true
     # -- Roll out Hubble Relay pods automatically when configmap is updated.
     rollOutPods: false
     # -- Hubble-relay container image.
@@ -1524,7 +1524,7 @@ hubble:
       port: 6062
   ui:
     # -- Whether to enable the Hubble UI.
-    enabled: false
+    enabled: true
     standalone:
       # -- When true, it will allow installing the Hubble UI only, without checking dependencies.
       # It is useful if a cluster already has cilium and Hubble relay installed and you just
